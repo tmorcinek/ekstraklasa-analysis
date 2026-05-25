@@ -1,6 +1,6 @@
 # Ekstraklasa 25/26 — losowa czy wyrównana?
 
-*Tabela najbardziej zbita w historii ligi. Co mówią o tym dane?*
+*Tabela najbardziej zbita w historii ligi. Co mówią o tym liczby?*
 
 ![Ekstraklasa 25/26 — losowa czy wyrównana?](data/substac_cover_gemini.png)
 
@@ -151,4 +151,4 @@ Co Ekstraklasę ściska? To pytanie może już wychodzić poza samą statystykę
 
 ---
 
-*Dane: wyniki wszystkich meczów Ekstraklasy 2012–2026 oraz sezonu 2025/26 sześciu lig europejskich (źródło: [football-data.co.uk](https://www.football-data.co.uk/), średnie kursy zamknięcia z wielu bukmacherów). Analiza obejmuje miary rozproszenia punktów (ASD, Noll-Scully), kalkulację siły drużyn na podstawie strzelanych i wpuszczanych goli (model Maher 1982 / Dixon-Coles 1997), kalibrację kursów bukmacherskich (Brier, Murphy decomposition) oraz symulacje Monte Carlo (5000 alternatywnych sezonów na ligę). Pełny kod, dane i wygenerowane figury: [github.com/tmorcinek/ekstraklasa-analysis](https://github.com/tmorcinek/ekstraklasa-analysis).*
+*Dane: wyniki wszystkich meczów Ekstraklasy 2012–2026 oraz sezonu 2025/26 sześciu lig europejskich (źródło: [football-data.co.uk](https://www.football-data.co.uk/), średnie kursy zamknięcia z wielu bukmacherów). Analiza obejmuje miary rozproszenia punktów (ASD, Noll-Scully), kalkulację siły drużyn na podstawie strzelanych i wpuszczanych goli (model Maher 1982 / Dixon-Coles 1997), kalibrację kursów bukmacherskich (Brier, Murphy decomposition) oraz symulacje Monte Carlo (5000 alternatywnych sezonów na ligę). Pełny kod, dane i wygenerowane wykresy: [github.com/tmorcinek/ekstraklasa-analysis](https://github.com/tmorcinek/ekstraklasa-analysis).*
