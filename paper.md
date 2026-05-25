@@ -83,8 +83,6 @@ Skoro znamy klasy drużyn z poprzedniego rozdziału, można zadać pytanie: gdyb
 
 Odpowiedź daje symulacja Monte Carlo. Rozgrywamy 5000 alternatywnych sezonów dla każdej ligi (w każdym losując gole z rozkładu Poissona zgodnego z klasami drużyn) i patrzymy, jakie końcowe ASD daje każdy symulowany świat.
 
-Jedno założenie modelu warto z góry zaznaczyć: **klasa drużyny jest traktowana jako stała przez cały sezon**. W rzeczywistości drużyny grają inaczej w meczu z liderem niż z outsiderem; kontekst taktyczny się zmienia. Symulacja MC pokazuje, jaki świat byłby przy założeniu stałości.
-
 ![Histogramy ASD z 5000 symulowanych sezonów dla każdej z 6 lig, z zaznaczoną wartością rzeczywistą](output/figures/fig6_mc_asd_distributions.png)
 
 Każdy panel to histogram dla jednej ligi. Słupki pokazują, ile z 5000 symulowanych sezonów dało dane ASD: im wyższy słupek, tym częściej taki wynik się pojawił. Czarna pionowa linia to faktyczne ASD obecnego sezonu; jej położenie względem słupków mówi, jak typowym lub nietypowym wynikiem byłaby realna kompresja. Etykieta P(sim ≤ obs) podaje to liczbowo: w ilu symulowanych sezonach ASD wyszło tak niskie lub niższe od rzeczywistego.
@@ -149,7 +147,7 @@ Co Ekstraklasę ściska? To pytanie może już wychodzić poza samą statystykę
 
 ---
 
-*Uwaga metodologiczna: Noll-Scully policzony tu z poprawką na remisy (q = 0.25), bardziej naturalna miara dla piłki nożnej niż klasyczna formuła Quirka-Forta zakładająca binarne wyniki. Bardziej zaawansowane podejście (model Dixon-Coles z symulacją Monte Carlo) potwierdza ten sam wniosek: Ekstraklasa 25/26 jest ekstremalnie wyrównana — żadna z metod nie zmienia diagnozy, różnią się tylko precyzją.*
+*Uwagi metodologiczne: Noll-Scully policzony z poprawką na remisy (q = 0.25), bardziej naturalna miara dla piłki nożnej niż klasyczna formuła Quirka-Forta zakładająca binarne wyniki. Symulacja MC zakłada, że klasa drużyny jest stała przez cały sezon; w rzeczywistości kontekst meczu wpływa na poziom gry, czego model nie chwyta.*
 
 ---
 
