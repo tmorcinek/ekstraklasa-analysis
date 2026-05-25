@@ -1,0 +1,21 @@
+Team,PrevRank,CurrRank,Diff,AbsDiff,Kind
+Barcelona,1,1,0,0,stayed
+Real Madrid,2,2,0,0,stayed
+Villarreal,5,3,2,2,stayed
+Ath Madrid,3,4,-1,1,stayed
+Betis,6,5,1,1,stayed
+Celta,7,6,1,1,stayed
+Getafe,13,7,6,6,stayed
+Vallecano,9,8,1,1,stayed
+Valencia,11,9,2,2,stayed
+Sociedad,12,10,2,2,stayed
+Espanol,15,11,4,4,stayed
+Ath Bilbao,4,12,-8,8,stayed
+Elche,18,13,5,5,promoted
+Alaves,14,14,0,0,stayed
+Sevilla,16,15,1,1,stayed
+Osasuna,8,16,-8,8,stayed
+Mallorca,10,17,-7,7,stayed
+Levante,19,18,1,1,promoted
+Girona,17,19,-2,2,stayed
+Oviedo,20,20,0,0,promoted

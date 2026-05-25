@@ -1,0 +1,21 @@
+Team,PrevRank,CurrRank,Diff,AbsDiff,Kind
+Arsenal,2,1,1,1,stayed
+Man City,3,2,1,1,stayed
+Man United,15,3,12,12,stayed
+Aston Villa,6,4,2,2,stayed
+Liverpool,1,5,-4,4,stayed
+Bournemouth,9,6,3,3,stayed
+Sunderland,18,7,11,11,promoted
+Brighton,8,8,0,0,stayed
+Brentford,10,9,1,1,stayed
+Chelsea,4,10,-6,6,stayed
+Fulham,11,11,0,0,stayed
+Newcastle,5,12,-7,7,stayed
+Everton,13,13,0,0,stayed
+Leeds,19,14,5,5,promoted
+Crystal Palace,12,15,-3,3,stayed
+Nott'm Forest,7,16,-9,9,stayed
+Tottenham,17,17,0,0,stayed
+West Ham,14,18,-4,4,stayed
+Burnley,20,19,1,1,promoted
+Wolves,16,20,-4,4,stayed

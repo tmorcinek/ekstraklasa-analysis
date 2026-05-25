@@ -1,0 +1,19 @@
+Team,PrevRank,CurrRank,Diff,AbsDiff,Kind
+Bayern Munich,1,1,0,0,stayed
+Dortmund,4,2,2,2,stayed
+RB Leipzig,7,3,4,4,stayed
+Stuttgart,9,4,5,5,stayed
+Hoffenheim,15,5,10,10,stayed
+Leverkusen,2,6,-4,4,stayed
+Freiburg,5,7,-2,2,stayed
+Ein Frankfurt,3,8,-5,5,stayed
+Augsburg,12,9,3,3,stayed
+Mainz,6,10,-4,4,stayed
+Union Berlin,13,11,2,2,stayed
+M'gladbach,10,12,-2,2,stayed
+Hamburg,16,13,3,3,promoted
+FC Koln,17,14,3,3,promoted
+Werder Bremen,8,15,-7,7,stayed
+Wolfsburg,11,16,-5,5,stayed
+Heidenheim,16,17,-1,1,stayed
+St Pauli,14,18,-4,4,stayed
