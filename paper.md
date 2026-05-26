@@ -26,7 +26,7 @@ Samo odchylenie ma jedną wadę: zależy od długości sezonu. Porównując lig�
 
 ![Noll-Scully: 6 lig europejskich 2025/26](output/figures/fig3_nollscully_2526.png)
 
-Po raz pierwszy w historii tej ligi NS spadł poniżej 1.0. W 13 poprzednich sezonach Ekstraklasy wskaźnik oscylował między 1.25 a 1.86. Tegoroczne 0.90 to nie tylko rekord — to przekroczenie progu, który oznacza: tabela jest ciaśniejsza niż wynikałoby z samej losowości piłki nożnej.
+Po raz pierwszy w historii tej ligi NS spadł poniżej 1.0. W 13 poprzednich sezonach Ekstraklasy wskaźnik oscylował między 1.25 a 1.86. Tegoroczne 0.89 to nie tylko rekord — to przekroczenie progu, który oznacza: tabela jest ciaśniejsza niż wynikałoby z samej losowości piłki nożnej.
 
 ![Noll-Scully Ekstraklasy w 14 sezonach](output/figures/fig18_ns_history.png)
 
@@ -55,7 +55,7 @@ W Ekstraklasie wszystkie 18 drużyn tłoczą się w przedziale 34–60 punktów.
 | Liga            | Rozpiętość (pkt) | Min – Max |
 | --------------- | ---------------- | --------- |
 | **Ekstraklasa** | **26**           | 34 – 60   |
-| Ligue 1         | 60               | 16 – 76   |
+| Ligue 1         | 59               | 17 – 76   |
 | Bundesliga      | 63               | 26 – 89   |
 | EPL             | 65               | 20 – 85   |
 | La Liga         | 65               | 29 – 94   |
@@ -69,7 +69,7 @@ Rozkład Ekstraklasy jest praktycznie symetryczny: ani lider nie ucieka czołów
 
 Histogram przekonuje wizualnie, ale można pójść głębiej. Z wyników wszystkich rozegranych meczów Ekstraklasy możemy dla każdej drużyny wyestymować dwie liczby: siłę ataku (ile strzela) i siłę obrony (ile wpuszcza). Na tej podstawie wylicza się jedną liczbę: klasę drużyny, która oddaje ogólną siłę drużyny niezależnie od losowości w pojedynczych meczach.
 
-> *Model formalnie:* Gole w meczu modelowane jako rozkład Poissona z parametrem λ = exp(atak − obrona_przeciwnika + przewaga_pola). Klasa drużyny = atak + obrona. Model Mahera (1982), rozszerzony przez Dixona-Colesa (1997, *JRSS Applied Statistics*).
+> *Model formalnie:* Gole w meczu modelowane jako rozkład Poissona z parametrem λ = exp(atak − obrona_przeciwnika + przewaga_pola). Klasa drużyny = atak + obrona. Model Mahera (1982).
 
 Co z tego wychodzi? Rozrzut klas drużyn, czyli jak daleko od siebie są najsilniejsze i najsłabsze (mierzony odchyleniem standardowym SD parametru klasy), w Ekstraklasie wynosi **0.22**. W EPL i La Lidze to około 0.39, w Bundeslidze 0.45. Ekstraklasa jest **dwa razy bardziej zbita klasowo** niż Premier League, **ponad dwa razy** niż Bundesliga. Różnica między najsilniejszą drużyną Ekstraklasy (Lech Poznań) a najsłabszą (Arka Gdynia) jest mniejsza niż różnica między Barceloną a piątym Realem Betis.
 
@@ -81,7 +81,9 @@ Z perspektywy modelu wniosek jest taki sam: drużyny są realnie zbliżone klas�
 
 Skoro znamy klasy drużyn z poprzedniego rozdziału, można zadać pytanie: gdyby ta liga rozegrała sezon jeszcze raz (drużyny te same, klasy te same, ale wyniki każdego meczu wylosowane na nowo zgodnie z modelem), jak rozłożyłyby się punkty?
 
-Odpowiedź daje symulacja Monte Carlo. Rozgrywamy 5000 alternatywnych sezonów dla każdej ligi (w każdym losując gole z rozkładu Poissona zgodnego z klasami drużyn) i patrzymy, jakie końcowe ASD daje każdy symulowany świat.
+Odpowiedź daje symulacja Monte Carlo. Patrzymy, jakie końcowe ASD daje każdy z 5000 symulowanych światów.
+
+> *Symulacja Monte Carlo:* technika obliczeniowa polegająca na wielokrotnym losowym próbkowaniu. W naszym przypadku: dla każdej z 5000 powtórek sezonu klasy drużyn pozostają stałe, ale wynik każdego meczu jest losowany na nowo (gole z rozkładu Poissona zgodnego z modelem). Z każdej powtórki liczymy końcową tabelę i jej ASD.
 
 ![Histogramy ASD z 5000 symulowanych sezonów dla każdej z 6 lig, z zaznaczoną wartością rzeczywistą](output/figures/fig6_mc_asd_distributions.png)
 
@@ -128,7 +130,7 @@ Porównanie z innymi ligami potwierdza obserwację. Średnia rotacja pomiędzy p
 
 Wracając do pytania, od którego zaczęliśmy: czy Ekstraklasa 25/26 jest **losowa, czy wyrównana**? Liczby dają jedną odpowiedź. Wyrównana. I to bardziej, niż jakikolwiek model by przewidział. O losowości można powiedzieć nawet więcej: została nad wyraz stłumiona.
 
-Drużyny są realnie podobnej klasy. Model Dixona-Colesa pokazuje to wprost: rozrzut sił klas o połowę węższy niż w Top 5. Bukmacherzy widzą to samo: faworyt dostaje średnio 46% szans (vs 52% w Top 5), a w pełnym sezonie wygrywa nawet **rzadziej** niż ich modele przewidywały (42%). Rzeczywistość okazała się jeszcze ciaśniejsza niż prognoza.
+Drużyny są realnie podobnej klasy. Model Mahera pokazuje to wprost: rozrzut sił klas o połowę węższy niż w Top 5. Bukmacherzy widzą to samo: faworyt dostaje średnio 46% szans (vs 52% w Top 5), a w pełnym sezonie wygrywa nawet **rzadziej** niż ich modele przewidywały (42%). Rzeczywistość okazała się jeszcze ciaśniejsza niż prognoza.
 
 Symulacja Monte Carlo używająca prawdziwych klas drużyn przewidywałaby ASD punktów rzędu 9.6, bo statystyka mówi, że nawet z tymi klasami konkretne wyniki będą się wahać szeroko i pojawią się różnice punktowe pomiędzy drużynami. Mamy 6.82. Wariancja per-mecz **nie materializuje się** tak, jak teoretyczny model przewiduje.
 
@@ -147,8 +149,8 @@ Co Ekstraklasę ściska? To pytanie może już wychodzić poza samą statystykę
 
 ---
 
-*Uwagi metodologiczne: Noll-Scully policzony z poprawką na remisy (q = 0.25), bardziej naturalna miara dla piłki nożnej niż klasyczna formuła Quirka-Forta zakładająca binarne wyniki. Symulacja MC zakłada, że klasa drużyny jest stała przez cały sezon; w rzeczywistości kontekst meczu wpływa na poziom gry, czego model nie chwyta.*
+*Uwagi metodologiczne: Noll-Scully policzony z poprawką na remisy (q = 0.25), bardziej naturalna miara dla piłki nożnej niż klasyczna formuła Quirka-Forta zakładająca binarne wyniki. Symulacja MC zakłada, że klasa drużyny jest stała przez cały sezon; w rzeczywistości kontekst meczu wpływa na poziom gry, czego model nie chwyta. Rotacja pozycji: beniaminkowie 25/26 sparowani z dolnymi pozycjami sezonu 24/25 w sposób minimalizujący średnią zmianę. Wartość pokazana w artykule to dolne ograniczenie faktycznej rotacji; we wszystkich ligach liczone tą samą zasadą, więc porównanie między ligami zachowuje sens.*
 
 ---
 
-*Dane: wyniki wszystkich meczów Ekstraklasy 2012–2026 oraz sezonu 2025/26 sześciu lig europejskich (źródło: [football-data.co.uk](https://www.football-data.co.uk/), średnie kursy zamknięcia z wielu bukmacherów). Analiza obejmuje miary rozproszenia punktów (ASD, Noll-Scully), kalkulację siły drużyn na podstawie strzelanych i wpuszczanych goli (model Maher 1982 / Dixon-Coles 1997), kalibrację kursów bukmacherskich (Brier, Murphy decomposition) oraz symulacje Monte Carlo (5000 alternatywnych sezonów na ligę). Pełny kod, dane i wygenerowane wykresy: [github.com/tmorcinek/ekstraklasa-analysis](https://github.com/tmorcinek/ekstraklasa-analysis).*
+*Dane: wyniki wszystkich meczów Ekstraklasy 2012–2026 oraz sezonu 2025/26 sześciu lig europejskich (źródło: [football-data.co.uk](https://www.football-data.co.uk/), średnie kursy zamknięcia z wielu bukmacherów). Analiza obejmuje miary rozproszenia punktów (ASD, Noll-Scully), kalkulację siły drużyn na podstawie strzelanych i wpuszczanych goli (model Maher 1982), kalibrację kursów bukmacherskich (Brier, Murphy decomposition) oraz symulacje Monte Carlo (5000 alternatywnych sezonów na ligę). Pełny kod, dane i wygenerowane wykresy: [github.com/tmorcinek/ekstraklasa-analysis](https://github.com/tmorcinek/ekstraklasa-analysis).*
