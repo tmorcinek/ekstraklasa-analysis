@@ -139,6 +139,8 @@ Co ciekawe, na poziomie pojedynczych meczów Ekstraklasa wygląda nieodróżnial
 - Odsetek meczów z różnicą ≥ 2 gole: 34.3% vs 35.6% (bardzo podobny)
 - Odsetek remisów: 27.8% vs 25.3% (większy, ale nie znacząco)
 
+![Procent meczy z daną różnicą w golach](output/figures/fig21_goal_diff_distribution.png)
+
 A jednak hierarchia się ustawia. Lech jest pierwszy, Termalica ostatnia. Przez 34 mecze drobne przewagi klasowe kumulują się w stabilny porządek. W lidze tak ciasnej decyduje nie wielka przewaga, tylko **margines** wystarczający, żeby tabela miała sens. Średnia rotacja pozycji między sezonami w Ekstraklasie to 3.2 miejsca, w EPL 3.7, w Bundeslidze 3.7. Wszystkie wyraźnie poniżej ~6, których oczekiwalibyśmy w lidze całkowicie losowej.
 
 Wracając do przypadku Śląska Wrocław: wicemistrz 23/24, spadek w kolejnym sezonie. To nie dowód losowości ligi, tylko **czułość ciasnej tabeli na zmiany w jednej drużynie**. Mała erozja formy (odejścia kluczowych zawodników, nieudane transfery, kontuzje) przekłada się tu na kilkanaście miejsc spadku zamiast jednego-dwóch. Nie ma bufora punktowego, który tłumiłby konsekwencje.
