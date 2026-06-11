@@ -6,8 +6,8 @@ import matplotlib.pyplot as plt
 from ekstraklasa.config import FIG_DIR
 
 
-def save_figure(fig: plt.Figure, filename: str, *, dpi: int = 150, **savefig_kwargs) -> Path:
-    out_path = FIG_DIR / filename
+def save_figure(fig: plt.Figure, filename: str, *, output_dir: Path | None = None, dpi: int = 150, **savefig_kwargs) -> Path:
+    out_path = (output_dir or FIG_DIR) / filename
     fig.savefig(out_path, dpi=dpi, **savefig_kwargs)
     plt.close(fig)
     print(f"  saved {out_path}")
