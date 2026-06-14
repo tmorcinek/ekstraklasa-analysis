@@ -42,6 +42,21 @@ python3 08_distribution_stats.py     # → output/csv/distribution_stats.csv + f
 python3 09_slope_chart.py            # → fig16 (slope chart Ekstraklasy)
 python3 11_position_changes.py       # → output/csv/position_changes_<league>.csv + fig20
 python3 12_goal_stats.py             # → output/csv/team_match_stats_2526_<league>.csv + fig21
+
+# część 2 — „Co ściska tabelę Ekstraklasy?" (paper2.md)
+python3 27_fear_per_team.py          # → output/csv/teams/fear_per_team.csv (strefa strachu per drużyna)
+python3 35_possession_last_k.py      # → fig66, fig66b (posiadanie per drużyna / Lech)
+python3 40_margin_three_leagues.py   # → fig95 (rozkład różnicy bramek, 3 ligi)
+python3 41_h2h_three_leagues.py      # → fig96 (macierze H2H + cykle)
+python3 44_style_dispersion.py       # → output/csv/style/style_dispersion.csv (CV rozrzutu stylu)
+python3 45_style_outliers.py         # → output/csv/style/style_outliers.csv (outliery 0/0/2)
+python3 47_possession_figs.py        # → fig116, fig117 (posiadanie a wynik/prowadzenie)
+python3 48_style_chapter_figs.py     # → fig89, fig90 (boxplot posiadania, cechy stylu)
+python3 49_first_goal_loss_rate.py   # → output/csv/leagues/first_goal_loss_rate.csv (≥60% pos., straty)
+python3 50_first_goal_value.py       # → output/csv/leagues/first_goal_value.csv (pierwszy gol → wynik)
+python3 51_first_goal_by_favourite.py# → output/csv/leagues/first_goal_favourite{,_bands}.csv + fig118, fig119
+python3 52_high_possession_table.py  # → output/csv/leagues/high_possession_table.csv (tabela ≥60%)
+python3 54_zone_composition.py       # → fig123 (kompozycja strefy strachu)
 ```
 
 Skrypty są niezależne, można uruchamiać dowolny w dowolnej kolejności.
