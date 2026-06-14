@@ -79,7 +79,7 @@ Widać to wprost w liczbach dla meczów, gdzie drużyna miała co najmniej 60% p
 
 W Ekstraklasie drużyna z ≥60% piłki **w ponad dwóch trzecich meczów nie wychodzi na prowadzenie ani na chwilę** — przez cały mecz remisuje lub przegrywa. Licząc wszystkie takie mecze łącznie, prowadzi przeciętnie przez zaledwie **12% czasu**. W Liga Portugal na prowadzenie nie wychodzi tylko **33%** takich drużyn, a średni czas na prowadzeniu to 31%. Drużyna z piłką w Ekstraklasie nie dyktuje warunków — ona goni.
 
-Co więc decyduje o przebiegu meczu, skoro nie posiadanie piłki? Pierwszy gol — a w Ekstraklasie drużyna z wyraźną przewagą przy piłce (**co najmniej 60% posiadania**) zwykle jest tą, która traci go jako pierwsza: w **74 ze 115** takich meczów. Bierze piłkę, bo już goni, i rzadko jej to pomaga: po stracie pierwszego gola, mimo posiadania, **przegrywa cały mecz w 76% przypadków, wyraźnie częściej niż w Premier League (62%) czy Liga Portugal (54%)**. Posiadanie jest reakcją: bodźcem jest pierwsza bramka.
+Co więc decyduje o przebiegu meczu, skoro nie posiadanie piłki? Pierwszy gol — a w Ekstraklasie drużyna z wyraźną przewagą przy piłce (**co najmniej 60% posiadania**) zwykle jest tą, która traci go jako pierwsza: w **74 ze 115** takich meczów. Bierze piłkę, bo już goni, i rzadko jej to pomaga: po stracie pierwszego gola, mimo posiadania, **przegrywa cały mecz w 76% przypadków, wyraźnie częściej niż w Premier League (62%) czy Liga Portugal (53%)**. Posiadanie jest reakcją: bodźcem jest pierwsza bramka.
 
 Najwyraźniej widać to na liderze. Lech Poznań ma jedne z najwyższych średnich posiadań w lidze (**57.6%**) — to zespół uchodzący za drużynę grającą piłką. A jednak pięć meczów, w których miał jej najwięcej (69–81% posiadania), to **trzy porażki i dwa remisy — ani jednego zwycięstwa**. W każdym z tych meczów Lech stracił wcześnie bramkę lub długo remisował i przez to gonił wynik. Komplet punktów Lech zgarniał przy umiarkowanym, a często wręcz niskim posiadaniu; gdy najmocniej dominował przy piłce, zwykle schodził z boiska bez wygranej.
 
@@ -115,7 +115,7 @@ W Ekstraklasie spadają trzy drużyny. Odtwórzmy tabelę w kolejnych wyrównany
 
 Zieleni jest niewiele — na jesień niemal każda drużyna była o jedną, dwie wygrane od dołu. Bezpieczna strefa zaczyna się wypełniać dopiero wiosną, gdy czołówka odkleja się od reszty.
 
-Pięć drużyn nie wyszło z zasięgu strefy przez co najmniej **96% sezonu** — Arka Gdynia dosłownie ani na moment. Pogoń Szczecin tkwiła w zasięgu dołu przez **120 ze 125** dat meczowych. Nawet mistrz, Lech Poznań, bywał w matematycznym zasięgu strefy przez jedną piątą sezonu.
+Siedem drużyn nie wyszło z zasięgu strefy przez co najmniej **96% sezonu** — Arka Gdynia dosłownie ani na moment, Pogoń Szczecin przez **99%**. Nawet mistrz, Lech Poznań, bywał w matematycznym zasięgu strefy przez ponad 40% sezonu.
 
 Przez cały sezon dwanaście drużyn, od 5. do 16. miejsca, mieściło się w jedenastu punktach: każda jednocześnie o krok od europejskich pucharów i o krok od strefy spadkowej.
 
