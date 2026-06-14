@@ -1,6 +1,9 @@
 # ekstraklasa-analysis
 
-Analiza statystyczna wyrównania konkurencyjnego (competitive balance) w polskiej Ekstraklasie 25/26 — biblioteka Python + skrypty, które wygenerowały dane i figury do artykułu **"Ekstraklasa 25/26 — losowa czy wyrównana?"**
+Analiza statystyczna polskiej Ekstraklasy 25/26 — biblioteka Python + skrypty, które wygenerowały dane i figury do dwóch artykułów na Substacku:
+
+1. **„Ekstraklasa 25/26 — losowa czy wyrównana?"** ([paper.md](paper.md)) — czy najbardziej zbita tabela w historii ligi to prawdziwe wyrównanie, czy przypadek.
+2. **„Co ściska tabelę Ekstraklasy?"** ([paper2.md](paper2.md)) — skoro liga jest wyrównana, ale nie losowa, to jaka siła dociska tabelę: w poszukiwaniu mechanizmu (styl gry, posiadanie, strefa strachu, pierwszy gol).
 
 ## Co tu jest
 
@@ -10,13 +13,14 @@ src/ekstraklasa/        # biblioteka analityczna
 ├── data/               # loadery CSV-ek, budowa tabel ligowych
 ├── metrics/            # ASD, Noll-Scully, Dixon-Coles,
 │                       # kalibracja kursów bukmacherskich, statystyki rozkładu
-└── plots/              # figury do artykułu (fig3, fig6, fig7, fig14, fig15, fig16, fig17, fig18, fig20)
+└── plots/              # figury do obu artykułów
 
-scripts/                # entry points
-data/                   # 11 CSV z football-data.co.uk + cover artykułu
-                        # POL.csv (Ekstraklasa 2012-2026) + 5×2 lig Top 5
-output/                 # wygenerowane CSV-ki metryk i figury PNG
-paper.md                # pełny tekst artykułu (Substack)
+scripts/                # entry points (część 1: 01-12, część 2: 27-54)
+data/                   # CSV z football-data.co.uk + statystyki stylu + okładki
+                        # POL.csv (Ekstraklasa 2012-2026), 5×2 lig Top 5, P1.csv (Liga Portugal)
+output/                 # wygenerowane CSV-ki metryk i figury PNG (balance/h2h/teams/leagues/style)
+paper.md                # pełny tekst artykułu 1 (Substack)
+paper2.md               # pełny tekst artykułu 2 (Substack)
 ```
 
 ## Wymagania
@@ -33,6 +37,8 @@ Wszystkie skrypty z `scripts/`:
 
 ```bash
 cd scripts
+
+# część 1 — „Ekstraklasa 25/26 — losowa czy wyrównana?" (paper.md)
 python3 01_tables_and_balance.py     # → output/csv/{tables_per_season,league_metrics}.csv
 python3 02_cross_league.py           # → output/csv/all_league_metrics.csv
 python3 03_figures.py                # → fig3, fig17, fig18
@@ -65,17 +71,31 @@ Każdy zaczyna się od `import _bootstrap` — to shim, który dodaje `src/` do 
 
 ## Metodologia (skrót)
 
+### Część 1 — diagnoza wyrównania
+
 - **ASD (Actual Standard Deviation)**: odchylenie standardowe punktów w tabeli — najprostszy miernik kompresji.
 - **Noll-Scully**: ASD znormalizowane przez ISD (odchylenie hipotetycznej ligi losowej). NS = 1 oznacza ligę nieodróżnialną klasowo. Liczone z poprawką na remisy (q = 0.25).
 - **Dixon-Coles**: model Poissona, oddzielnie atak i obrona per drużyna. Klasa = atak + obrona. Closed-form coordinate updates (bez scipy/gradientu).
 - **Monte Carlo**: 5000 alternatywnych sezonów per liga z wyestymowanymi klasami DC, losowanie goli z rozkładu Poissona.
 - **Kalibracja kursów**: kursy zamknięcia bukmacherów → prawdopodobieństwo no-vig → porównanie z faktycznym wynikiem (Brier, Murphy decomposition).
 
+### Część 2 — szukanie siły dociskającej
+
+Punktem odniesienia są dwie ligi nieodróżnialne od Ekstraklasy pod względem przebiegu meczów (gole/mecz, odsetek remisów, rozkład różnicy bramkowej): Premier League i Liga Portugal. Metody to porównanie tych trzech lig:
+
+- **Cykle H2H**: udział „kółek" kamień-papier-nożyce (A→B→C→A) wśród rozstrzygniętych trójek drużyn — miara, jak słabo wyniki układają się w jedną hierarchię (czyste losowanie ≈ 25%).
+- **Rozrzut i outliery stylu**: cztery ofensywne cechy meczowe (posiadanie, liczba podań, % długich podań, % podań w tercji ataku) agregowane per drużyna; współczynnik zmienności (CV) mówi, jak bardzo drużyny różnią się stylem, a test outlierów wykrywa zespoły odstające od ligowej średniej.
+- **Posiadanie a wynik**: odsetek zwycięstw i mediana czasu na prowadzeniu w funkcji progu/przedziału posiadania — pokazuje, czy więcej piłki przekłada się na punkty, czy jest tylko objawem gonienia.
+- **Analiza pierwszego gola**: kto strzela pierwszy i jak często faworyt (definiowany jak w części 1 — wyższe no-vig prawdopodobieństwo) otwiera wynik, w podziale na siłę faworyta; oraz los meczu po stracie pierwszego gola przy ≥60% posiadania.
+- **Strefa strachu**: ile kolejek każda drużyna spędza o jedną-dwie porażki od strefy spadkowej — kanał, który napędza zachowawczą, reaktywną grę.
+
+Statystyki meczowe (posiadanie, podania, strefy boiska, czas na prowadzeniu) pochodzą z SofaScore i obejmują wszystkie mecze sezonu 25/26 trzech porównywanych lig. Próg 60% posiadania wybrany jako granica wyraźnej dominacji przy piłce; wnioski są odporne na zmianę progu w zakresie 55–65%.
+
 Pełne wzory i odniesienia literaturowe — patrz `docs/WSKAZNIKI.md` w głównym projekcie [analiza-ekstraklasy](https://github.com/tomasz-morcinek-dtiq/analiza-ekstraklasy).
 
 ## Dane
 
-Wszystkie CSV-ki z [football-data.co.uk](https://www.football-data.co.uk/) (Pinnacle Closing, Bet365 Closing, Average Closing odds + wyniki). Pliki w `data/`:
+Wyniki i kursy z [football-data.co.uk](https://www.football-data.co.uk/) (Pinnacle Closing, Bet365 Closing, Average Closing odds + wyniki). Pliki w `data/`:
 
 - `POL.csv` — Ekstraklasa, sezony 2012-2026 (z kolumną `Season`)
 - `E0.csv` / `E0-2.csv` — EPL 25/26 i 24/25
@@ -83,11 +103,17 @@ Wszystkie CSV-ki z [football-data.co.uk](https://www.football-data.co.uk/) (Pinn
 - `D1.csv` / `D1-2.csv` — Bundesliga 25/26 i 24/25
 - `I1.csv` / `I1-2.csv` — Serie A 25/26 i 24/25
 - `F1.csv` / `F1-2.csv` — Ligue 1 25/26 i 24/25
+- `P1.csv` — Liga Portugal 25/26 (część 2)
+
+Do części 2 dochodzą statystyki meczowe (posiadanie, styl, przebieg) dla porównywanych lig — Ekstraklasa, Premier League, Liga Portugal — w plikach `*_statistics_all.csv`, `*_progress.csv` i `*_25_26_statistics.csv`.
 
 ## Licencja
 
 MIT — zobacz [LICENSE](LICENSE).
 
-## Artykuł
+## Artykuły
 
-Pełny tekst polski (Substack): [paper.md](paper.md)
+Pełne teksty polskie (Substack):
+
+- Część 1 — [paper.md](paper.md): „Ekstraklasa 25/26 — losowa czy wyrównana?"
+- Część 2 — [paper2.md](paper2.md): „Co ściska tabelę Ekstraklasy?"
