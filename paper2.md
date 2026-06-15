@@ -101,9 +101,7 @@ Gdy drużyna strzela pierwszego gola, w każdej z trzech lig kończy mecz niemal
 
 Kto otwiera wynik, w blisko **88%** nie schodzi z boiska pokonany, tak samo w Polsce, w Anglii i w Portugalii. Prowadzenie jest tak samo cenne wszędzie. Problem leży więc nie w tym, że faworyt je traci — lecz w tym, że w ogóle go nie zdobywa.
 
-W EPL i Portugalii im pewniejszy faworyt, tym częściej otwiera wynik — w grupie najsilniejszych dochodzi do **78%** i **84%**. W Ekstraklasie ta sama grupa zatrzymuje się na **61%**: krzywa, która gdzie indziej pnie się w górę, tu zostaje płaska. Przewaga klasy, nawet gdy jest wyraźna, nie zamienia się w przewagę na boisku. Bo po drugiej stronie nie stoi rywal, który odda pierwszą bramkę — stoi drużyna, dla której ten mecz jest finałem. Dlaczego każdy mecz w tej lidze jest finałem, pokazuje następna część.
-
-![Faworyt strzela pierwszy wg siły faworyta — trzy ligi (2025/26)](output/figures/leagues/fig119_favourite_first_by_strength_leagues.png)
+I tu jest źródło problemu: w Ekstraklasie faworyt otwiera wynik tylko w **53%** meczów, podczas gdy w Premier League w **67%**, a w Liga Portugal w **71%**. Przewaga klasy nie zamienia się na prowadzenie — bo po drugiej stronie nie stoi rywal, który odda pierwszą bramkę, lecz drużyna, dla której ten mecz jest finałem. Dlaczego każdy mecz w tej lidze jest finałem, pokazuje następna część.
 
 ## Każdy mecz to finał
 

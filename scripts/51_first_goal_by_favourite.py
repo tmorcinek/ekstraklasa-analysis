@@ -2,16 +2,14 @@
 
 Łączy prawdziwego „pierwszego strzelca" z danych zdarzeniowych (export/) z kursami
 bukmacherskimi (data/), wyznacza faworyta meczu (niższy kurs) i liczy, jak często to
-faworyt otwiera wynik — dla trzech lig, także w podziale na siłę faworyta.
+faworyt otwiera wynik — dla trzech lig.
 
 Dane wejściowe:
   data/{slug}_progress.csv         — pierwszy strzelec, wynik
   data/{POL,E0,P1}.csv             — kursy (Ekstraklasa: zamykające AvgC*, EPL/Portugalia: Avg*)
 Output:
   csv/leagues/first_goal_favourite.csv        — odsetek „faworyt strzela pierwszy" per liga
-  csv/leagues/first_goal_favourite_bands.csv  — j.w. w podziale na siłę faworyta
   figures/leagues/fig118_favourite_scores_first_leagues.png
-  figures/leagues/fig119_favourite_first_by_strength_leagues.png
 """
 import _bootstrap
 import numpy as np
@@ -52,9 +50,6 @@ LEAGUES = {
                           home_col="HomeTeam", away_col="AwayTeam", color=PORTUGAL_COLOR),
 }
 
-STRENGTH_BINS = [0, 0.45, 0.55, 1.0]
-STRENGTH_LABELS = ["≤45%", "45–55%", "55%+"]
-
 
 def favourite_first_df(config: dict) -> pd.DataFrame:
     progress = pd.read_csv(data_path(f"{config['slug']}_progress.csv"))
@@ -75,11 +70,8 @@ def favourite_first_df(config: dict) -> pd.DataFrame:
     merged = progress.merge(odds, on=["date", "home_fd", "away_fd"], how="left").dropna(
         subset=["odds_home", "odds_draw", "odds_away"])
     favourite_side = np.where(merged["odds_home"] < merged["odds_away"], "home", "away")
-    inverse = 1 / merged[["odds_home", "odds_draw", "odds_away"]].to_numpy()
-    normalized = inverse / inverse.sum(axis=1, keepdims=True)
     return pd.DataFrame({
         "favourite_first": merged["first_scorer"].to_numpy() == favourite_side,
-        "favourite_prob": normalized[:, [0, 2]].max(axis=1),
     })
 
 
@@ -89,22 +81,9 @@ overall = pd.DataFrame({
     league: {"matches": len(frame), "favourite_first_pct": round(100 * frame["favourite_first"].mean(), 1)}
     for league, frame in frames.items()}).T.rename_axis("league").reset_index()
 
-band_rows = []
-for league, frame in frames.items():
-    band = pd.cut(frame["favourite_prob"], bins=STRENGTH_BINS, labels=STRENGTH_LABELS)
-    grouped = frame.groupby(band, observed=False)["favourite_first"]
-    for label in STRENGTH_LABELS:
-        group = frame[band == label]
-        band_rows.append({"league": league, "strength": label, "matches": len(group),
-                          "favourite_first_pct": round(100 * group["favourite_first"].mean(), 1)})
-bands = pd.DataFrame(band_rows)
-
 CSV_LEAGUES.mkdir(parents=True, exist_ok=True)
 overall.to_csv(CSV_LEAGUES / "first_goal_favourite.csv", index=False)
-bands.to_csv(CSV_LEAGUES / "first_goal_favourite_bands.csv", index=False)
 print(overall.to_string(index=False))
-print()
-print(bands.to_string(index=False))
 
 # ── fig118: odsetek „faworyt strzela pierwszy" — trzy ligi ────────────────────
 fig, ax = plt.subplots(figsize=(8, 5))
@@ -121,25 +100,3 @@ ax.grid(axis="y", alpha=0.3)
 clean_axes(ax)
 fig.tight_layout()
 save_figure(fig, "fig118_favourite_scores_first_leagues.png", output_dir=FIG_LEAGUES)
-
-# ── fig119: faworyt strzela pierwszy wg siły faworyta ─────────────────────────
-fig, ax = plt.subplots(figsize=(9, 5))
-x = np.arange(len(STRENGTH_LABELS))
-width = 0.26
-for offset, (league, config) in zip((-width, 0, width), LEAGUES.items()):
-    values = [bands[(bands["league"] == league) & (bands["strength"] == label)]["favourite_first_pct"].iloc[0]
-              for label in STRENGTH_LABELS]
-    ax.bar(x + offset, values, width, color=config["color"], edgecolor="black", linewidth=0.5, label=league)
-ax.axhline(50, color="#555", linestyle="--", linewidth=1.2)
-ax.set_xticks(x)
-ax.set_xticklabels(STRENGTH_LABELS)
-ax.set_xlabel("Siła faworyta wg kursów (implikowane prawdopodobieństwo zwycięstwa)", fontsize=10)
-ax.set_ylabel("Faworyt strzela pierwszy (%)", fontsize=11)
-ax.set_ylim(0, 100)
-ax.set_title("Im wyraźniejszy faworyt, tym częściej strzela pierwszy — poza Ekstraklasą (2025/26)",
-             fontsize=12, weight="bold")
-ax.legend(fontsize=10)
-ax.grid(axis="y", alpha=0.3)
-clean_axes(ax)
-fig.tight_layout()
-save_figure(fig, "fig119_favourite_first_by_strength_leagues.png", output_dir=FIG_LEAGUES)

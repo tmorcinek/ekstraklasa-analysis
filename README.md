@@ -60,7 +60,7 @@ python3 47_possession_figs.py        # → fig116, fig117 (posiadanie a wynik/pr
 python3 48_style_chapter_figs.py     # → fig89, fig90 (boxplot posiadania, cechy stylu)
 python3 49_first_goal_loss_rate.py   # → output/csv/leagues/first_goal_loss_rate.csv (≥60% pos., straty)
 python3 50_first_goal_value.py       # → output/csv/leagues/first_goal_value.csv (pierwszy gol → wynik)
-python3 51_first_goal_by_favourite.py# → output/csv/leagues/first_goal_favourite{,_bands}.csv + fig118, fig119
+python3 51_first_goal_by_favourite.py# → output/csv/leagues/first_goal_favourite.csv + fig118
 python3 52_high_possession_table.py  # → output/csv/leagues/high_possession_table.csv (tabela ≥60%)
 python3 54_zone_composition.py       # → fig123 (kompozycja strefy strachu)
 ```
